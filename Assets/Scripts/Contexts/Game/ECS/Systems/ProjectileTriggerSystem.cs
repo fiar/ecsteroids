@@ -21,12 +21,14 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 		[Inject] private Data _data;
 
+		public object ComfigManager { get; private set; }
 
 		protected override void OnUpdate()
 		{
 			if (_data.Length == 0) return;
 
 			float deltaTime = Time.deltaTime;
+			var gameConfig = ConfigManager.Load<GameConfig>();
 
 			var toDestroy = new List<GameObject>();
 			for (int i = 0; i < _data.Length; i++)
@@ -44,17 +46,24 @@ namespace Scripts.Contexts.Game.ECS.Systems
 							var asteroid = gameObject.GetComponent<Asteroid>();
 							if (asteroid.Big)
 							{
-								DestructBigAsteroid(
-									gameObject.GetComponent<Position2D>().Value,
-									gameObject.GetComponent<Heading2D>().Value
-								);
+								DestructBigAsteroid(gameObject.GetComponent<Position2D>().Value);
 							}
 						}
+						Lean.LeanPool.Spawn(
+							gameConfig.Explosions[UnityEngine.Random.Range(0, gameConfig.Explosions.Length)],
+							gameObject.transform.position,
+							Quaternion.identity
+						);
 					}
 					else if (gameObject.GetComponent<Enemy>() != null)
 					{
 						toDestroy.Add(_data.TriggerHandler[i].gameObject);
 						toDestroy.Add(gameObject);
+						Lean.LeanPool.Spawn(
+							gameConfig.Explosions[UnityEngine.Random.Range(0, gameConfig.Explosions.Length)],
+							gameObject.transform.position,
+							Quaternion.identity
+						);
 					}
 					_data.TriggerHandler[i].Value = null;
 				}
@@ -67,7 +76,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 		}
 
 		// TODO: move to asteroids spawner
-		private void DestructBigAsteroid(float2 position, float2 heading)
+		private void DestructBigAsteroid(float2 position)
 		{
 			var config = ConfigManager.Load<AsteroidsConfig>();
 
@@ -80,7 +89,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 				asteroid.GetComponent<Asteroid>().Big = false;
 				asteroid.GetComponent<MoveSpeed>().Value = UnityEngine.Random.Range(config.MoveSpeedMinMax.x, config.MoveSpeedMinMax.y);
 				asteroid.GetComponent<Position2D>().Value = position;
-				asteroid.GetComponent<Heading2D>().Value = heading + (float2)UnityEngine.Random.insideUnitCircle.normalized;
+				asteroid.GetComponent<Heading2D>().Value = (float2)UnityEngine.Random.insideUnitCircle.normalized;
 			}
 		}
 	}

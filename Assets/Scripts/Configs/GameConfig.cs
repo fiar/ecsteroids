@@ -11,5 +11,8 @@ namespace Scripts.Configs
 		public Vector3 BoundsOuterExpand = Vector3.zero;
 		public float SpaceScrollMinSpeed = 0.1f;
 		public float SpaceScrollSpeed = 1f;
+
+		[Space]
+		public GameObject[] Explosions;
 	}
 }

@@ -15,3 +15,10 @@ MonoBehaviour:
   BoundsOuterExpand: {x: 5, y: 5, z: 0}
   SpaceScrollMinSpeed: 0.2
   SpaceScrollSpeed: 0.33
+  Explosions:
+  - {fileID: 1989062499107826, guid: f248a10a835211e4db94be74834a873e, type: 2}
+  - {fileID: 1550398586941250, guid: 63e93c7bc4741234fb761a22f16592b9, type: 2}
+  - {fileID: 1630156838928700, guid: e7429783fd3add947afb18832594b202, type: 2}
+  - {fileID: 1572499307762418, guid: 143e9c572693da848b0e2c714ffe3663, type: 2}
+  - {fileID: 1581148670974408, guid: e2b9befc548cbd644bab393e6e836de1, type: 2}
+  - {fileID: 1409917985726066, guid: 2a00622071d6bc94dabb91824a80ac36, type: 2}
