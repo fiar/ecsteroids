@@ -6,14 +6,13 @@ using System.Collections.Generic;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
-	public class PlayerMoveSystem : ComponentSystem
+	public class GlowPlayerSystem : ComponentSystem
 	{
 		public struct Data
 		{
 			public int Length;
-			public ComponentArray<Acceleration2D> Acceleration;
-			public ComponentArray<Position2D> Position;
-			public ComponentArray<Heading2D> Heading;
+			public ComponentArray<Glow> Glow;
+			public ComponentArray<SpriteRenderer> SpriteRenderer;
 		}
 
 		[Inject] private Data _data;
@@ -27,7 +26,12 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			for (int i = 0; i < _data.Length; i++)
 			{
-				_data.Position[i].Value += _data.Acceleration[i].Value * deltaTime;
+				// TODO: so ugly
+				var force = _data.SpriteRenderer[i].transform.GetComponentInParent<Acceleration2D>().Value / 10f;
+
+				var color = _data.SpriteRenderer[i].color;
+				color.a = math.length(force);
+				_data.SpriteRenderer[i].color = color;
 			}
 		}
 	}

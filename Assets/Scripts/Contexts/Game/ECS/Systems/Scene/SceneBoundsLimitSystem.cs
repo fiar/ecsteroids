@@ -30,7 +30,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			var config = ConfigManager.Load<GameConfig>();
 
-			var bounds = OrthoCamera.Main.Camera.CalculateOrthographicBounds(config.BoundsLimitExpand);
+			var bounds = OrthoCamera.Main.Camera.CalculateOrthographicBounds(config.BoundsInnerExpand);
 			_halfSize = bounds.size * 0.5f;
 		}
 
@@ -48,8 +48,8 @@ namespace Scripts.Contexts.Game.ECS.Systems
 				_data.Position[i].Value = v;
 
 				var acceleration = _data.Acceleration[i].Value;
-				if (_halfSize.x - math.abs(v.x) < 0.1f) acceleration.x = 0f;
-				if (_halfSize.y - math.abs(v.y) < 0.1f) acceleration.y = 0f;
+				if (_halfSize.x - math.abs(v.x) == 0f) acceleration.x = 0f;
+				if (_halfSize.y - math.abs(v.y) == 0f) acceleration.y = 0f;
 				_data.Acceleration[i].Value = acceleration;
 			}
 		}

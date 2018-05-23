@@ -12,39 +12,19 @@ namespace Scripts.Contexts.Game.FSM
 {
 	public class GameLoopState : ConcreteState
 	{
-		//private Background _background;
-		//private PlayerShip _playerShip;
-
-		//private AsteroidsSpawner _asteroidsSpawner;
-
 
 		protected void Awake()
 		{
 			var playerConfig = ConfigManager.Load<PlayerConfig>();
 
-			var player = ResourcesUtilities.InstantiateFromResource<GameObject>(playerConfig.ResourcePath);
-
-			//_background = GameObject.FindObjectOfType<Background>();
-			//Debug.Assert(_background != null, "Background not exists at scene");
-
-			//_playerShip = GameObject.FindObjectOfType<PlayerShip>();
-			//Debug.Assert(_playerShip != null, "PlayerShip not exists at scene");
-
-			//_asteroidsSpawner = new AsteroidsSpawner();
+			// Create Player
+			var player = GameObject.Instantiate<GameObject>(playerConfig.Prefab);
+			player.GetComponent<Heading2D>().Value = new float2(0f, 1f);
+			player.GetComponent<LaserEnergy>().Value = 1f;
 		}
 
 		protected void OnEnter()
 		{
-		}
-
-		protected void Update()
-		{
-			// Cool scroll background
-			//if (_background != null)
-			//	_background.SpeedScale = _playerShip.ShipVelocity.Velocity;
-
-			//_playerShip.UpdateShip();
-			//_asteroidsSpawner.UpdateSpawner();
 		}
 	}
 }

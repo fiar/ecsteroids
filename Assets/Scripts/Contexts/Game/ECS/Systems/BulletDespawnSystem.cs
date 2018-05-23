@@ -9,19 +9,18 @@ using Kernel.Core;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
-	public class SceneBoundsRepeatSystem : ComponentSystem
+	public class BulletDespawnSystem : ComponentSystem
 	{
 		public struct Data
 		{
 			public int Length;
-			public ComponentArray<SceneBoundsRepeat> SceneBoundsRepeat;
+			public ComponentArray<Bullet> Bullet;
 			public ComponentArray<Position2D> Position;
 		}
 
 		[Inject] private Data _data;
 
-		private Vector2 _size;
-		private Vector2 _halfSize;
+		private Bounds _bounds;
 
 
 		protected override void OnStartRunning()
@@ -30,9 +29,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			var config = ConfigManager.Load<GameConfig>();
 
-			var bounds = OrthoCamera.Main.Camera.CalculateOrthographicBounds(config.BoundsOuterExpand);
-			_size = bounds.size;
-			_halfSize = _size * 0.5f;
+			_bounds = OrthoCamera.Main.Camera.CalculateOrthographicBounds(config.BoundsOuterExpand);
 		}
 
 		protected override void OnUpdate()
@@ -41,12 +38,18 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			float deltaTime = Time.deltaTime;
 
+			var toDestroy = new List<GameObject>();
 			for (int i = 0; i < _data.Length; i++)
 			{
-				var v = _data.Position[i].Value;
-				v.x = Mathf.Repeat(v.x + _halfSize.x, _size.x) - _halfSize.x;
-				v.y = Mathf.Repeat(v.y + _halfSize.y, _size.y) - _halfSize.y;
-				_data.Position[i].Value = v;
+				if (!_bounds.Contains((Vector2)_data.Position[i].Value))
+				{
+					toDestroy.Add(_data.Bullet[i].gameObject);
+				}
+			}
+
+			foreach (var go in toDestroy)
+			{
+				Lean.LeanPool.Despawn(go);
 			}
 		}
 	}

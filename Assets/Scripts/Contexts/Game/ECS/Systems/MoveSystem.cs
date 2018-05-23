@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
-	public class PlayerMoveSystem : ComponentSystem
+	public class MoveSystem : ComponentSystem
 	{
 		public struct Data
 		{
 			public int Length;
-			public ComponentArray<Acceleration2D> Acceleration;
+			public ComponentArray<MoveSpeed> MoveSpeed;
 			public ComponentArray<Position2D> Position;
 			public ComponentArray<Heading2D> Heading;
 		}
@@ -27,7 +27,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			for (int i = 0; i < _data.Length; i++)
 			{
-				_data.Position[i].Value += _data.Acceleration[i].Value * deltaTime;
+				_data.Position[i].Value += _data.Heading[i].Value * _data.MoveSpeed[i].Value * deltaTime;
 			}
 		}
 	}

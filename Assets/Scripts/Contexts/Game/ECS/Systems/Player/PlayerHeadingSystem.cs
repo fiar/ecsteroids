@@ -29,9 +29,10 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			for (int i = 0; i < _data.Length; i++)
 			{
-				_data.Heading[i].Angle -= _data.Input[i].Axis.x * config.Torque * deltaTime;
+				var angle = Mathf.Atan2(_data.Heading[i].Value.y, _data.Heading[i].Value.x) * Mathf.Rad2Deg - 90;
+				angle -= _data.Input[i].Axis.x * config.Torque * deltaTime;
 
-				var up = Quaternion.AngleAxis(_data.Heading[i].Angle, Vector3.forward) * Vector3.up;
+				var up = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
 				_data.Heading[i].Value = new float2(up.x, up.y);
 			}
 		}

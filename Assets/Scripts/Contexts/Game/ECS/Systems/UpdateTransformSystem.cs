@@ -23,9 +23,10 @@ namespace Scripts.Contexts.Game.ECS.Systems
 		{
 			for (int i = 0; i < _data.Length; i++)
 			{
+				var angle = Mathf.Atan2(_data.Heading[i].Value.y, _data.Heading[i].Value.x) * Mathf.Rad2Deg - 90;
 				var position = _data.Position[i].Value;
 				_data.Output[i].position = new float3(position.x, position.y, 0f);
-				_data.Output[i].rotation = Quaternion.AngleAxis(_data.Heading[i].Angle, Vector3.forward);
+				_data.Output[i].rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			}
 		}
 	}

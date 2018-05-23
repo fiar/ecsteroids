@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Scripts.Contexts.Game.ECS.Components
 {
-	public class Heading2D : MonoBehaviour
+	public class MoveSpeed : MonoBehaviour
 	{
-		public float2 Value;
+		public float Value;
 	}
 }

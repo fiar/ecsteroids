@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Scripts.Contexts.Game.ECS.Components
 {
-	public class Heading2D : MonoBehaviour
+	public class Health : MonoBehaviour
 	{
-		public float2 Value;
+		public int Value;
 	}
 }

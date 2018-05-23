@@ -11,7 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0d3bf08aa0f2c4bbf3d7389af9a985, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  ResourcePath: Game/Player
+  Prefab: {fileID: 1372003638660672, guid: 948e5d42139e4104482eefccaf1ad7c7, type: 2}
   Acceleration: 16
   Deceleration: 2
   Torque: 180
+  BulletShootCooldown: 0.5
+  LaserShootCooldown: 0.5
+  LaserShootPrepare: 1

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622a5ddac7afbb4439ad64ad86ad22da, type: 3}
+  m_Name: Projectiles
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 1715488483635064, guid: 719a3a1f627adfa40aa320bb71076ef6,
+    type: 2}
+  BulletDamage: 1
+  BulletSpeed: 50
+  LaserPrefab: {fileID: 1773213252225466, guid: e2014d8a5a247ac469ecb07cfd3948ce,
+    type: 2}
+  LaserDamage: 99
+  LaserSpeed: 100
+  LaserShootEnergy: 0.2
+  LaserRestoreSpeed: 0.02

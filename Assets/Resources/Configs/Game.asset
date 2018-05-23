@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2501e839a055f44b972c61f65b5416a, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: 
-  BoundsLimitExpand: {x: -2, y: -2, z: 0}
-  BoundsRepeatExpand: {x: 2, y: 2, z: 0}
+  BoundsInnerExpand: {x: -2, y: -2, z: 0}
+  BoundsOuterExpand: {x: 2, y: 2, z: 0}
   SpaceScrollMinSpeed: 0.2
   SpaceScrollSpeed: 0.33
