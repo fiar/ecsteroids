@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f71e4ec5a5c264db2f4a806e1e68fc, type: 3}
+  m_Name: Asteroids
+  m_EditorClassIdentifier: 
+  AsteroidsXL:
+  - {fileID: 1924555456284862, guid: 7434636418665544699069441761ad90, type: 2}
+  - {fileID: 1924555456284862, guid: ba709cfda714bfb4394eb5a1855fb311, type: 2}
+  - {fileID: 1924555456284862, guid: c29ae4d21f1a64d418cf72e260d67de3, type: 2}
+  AsteroidsL:
+  - {fileID: 1242756509914250, guid: 346018f84b9e88944b8698968e05dabc, type: 2}
+  - {fileID: 1242756509914250, guid: a6a97a015ca659443bddbc74fbdaa731, type: 2}
+  - {fileID: 1242756509914250, guid: 063c5de1864a7a44d8055ad65056ea90, type: 2}
+  AsteroidsSpawnPeriod: 10
+  MoveSpeedMinMax: {x: 10, y: 22}
+  AngularSpeedMinMax: {x: 24, y: 90}
+  AsteroidHealth: 1
+  UFOHealth: 3

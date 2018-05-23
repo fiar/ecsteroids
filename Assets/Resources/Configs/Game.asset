@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Game
   m_EditorClassIdentifier: 
   BoundsInnerExpand: {x: -2, y: -2, z: 0}
-  BoundsOuterExpand: {x: 2, y: 2, z: 0}
+  BoundsOuterExpand: {x: 5, y: 5, z: 0}
   SpaceScrollMinSpeed: 0.2
   SpaceScrollSpeed: 0.33
