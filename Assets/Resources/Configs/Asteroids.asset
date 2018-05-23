@@ -19,8 +19,6 @@ MonoBehaviour:
   - {fileID: 1242756509914250, guid: 346018f84b9e88944b8698968e05dabc, type: 2}
   - {fileID: 1242756509914250, guid: a6a97a015ca659443bddbc74fbdaa731, type: 2}
   - {fileID: 1242756509914250, guid: 063c5de1864a7a44d8055ad65056ea90, type: 2}
-  AsteroidsSpawnPeriod: 10
-  MoveSpeedMinMax: {x: 10, y: 22}
-  AngularSpeedMinMax: {x: 24, y: 90}
-  AsteroidHealth: 1
-  UFOHealth: 3
+  SpawnPeriod: 6
+  MoveSpeedMinMax: {x: 10, y: 6}
+  Health: 1

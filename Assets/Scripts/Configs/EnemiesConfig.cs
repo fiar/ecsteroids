@@ -4,11 +4,10 @@ using Kernel.Core;
 
 namespace Scripts.Configs
 {
-	[CreateAssetMenu(menuName = "Configs/Asteroids", order = Config.Order)]
-	public class AsteroidsConfig : Config
+	[CreateAssetMenu(menuName = "Configs/Enemies", order = Config.Order)]
+	public class EnemiesConfig : Config
 	{
-		public GameObject[] AsteroidsXL;
-		public GameObject[] AsteroidsL;
+		public GameObject[] Enemies;
 
 		[Space]
 		public float SpawnPeriod = 6f;

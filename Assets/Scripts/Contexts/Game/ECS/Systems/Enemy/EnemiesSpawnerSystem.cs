@@ -9,12 +9,13 @@ using Scripts.Components;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
-	public class AsteroidsSpawnerSystem : ComponentSystem
+	// TODO: its clone of Asteroids spawner (fix this)
+	public class EnemiesSpawnerSystem : ComponentSystem
 	{
 		public struct Data
 		{
 			public int Length;
-			public ComponentArray<AsteroidsSpawner> AsteroidsSpawner;
+			public ComponentArray<EnemiesSpawner> EnemiesSpawner;
 		}
 
 		[Inject] private Data _data;
@@ -37,25 +38,25 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			if (_data.Length == 0) return;
 
 			var deltaTime = Time.deltaTime;
-			var asteroidsConfig = ConfigManager.Load<AsteroidsConfig>();
+			var enemiesConfig = ConfigManager.Load<EnemiesConfig>();
 
-			_timer -= deltaTime;
+			_timer += deltaTime;
 
-			if (_timer <= 0f)
+			if (_timer >= enemiesConfig.SpawnPeriod)
 			{
-				_timer += asteroidsConfig.SpawnPeriod;
+				_timer = 0;
 
 				for (int i = 0; i < _data.Length; i++)
 				{
-					CreateAsteroid(asteroidsConfig);
+					CreateEnemy(enemiesConfig);
 				}
 			}
 		}
 
-		private void CreateAsteroid(AsteroidsConfig config)
+		private void CreateEnemy(EnemiesConfig config)
 		{
-			var idx = UnityEngine.Random.Range(0, config.AsteroidsXL.Length);
-			var prefab = config.AsteroidsXL[idx];
+			var idx = UnityEngine.Random.Range(0, config.Enemies.Length);
+			var prefab = config.Enemies[idx];
 
 			Vector2 position = Vector2.zero;
 			if (UnityEngine.Random.value > 0.5f)
@@ -71,11 +72,11 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			var rotateSign = Mathf.Sign(UnityEngine.Random.Range(-1f, 1f));
 
-			var asteroid = Lean.LeanPool.Spawn(prefab, (Vector2)position, Quaternion.identity);
-			asteroid.GetComponent<Health>().Value = config.Health;
-			asteroid.GetComponent<MoveSpeed>().Value = UnityEngine.Random.Range(config.MoveSpeedMinMax.x, config.MoveSpeedMinMax.y);
-			asteroid.GetComponent<Position2D>().Value = position;
-			asteroid.GetComponent<Heading2D>().Value = UnityEngine.Random.insideUnitCircle.normalized;
+			var enemy = Lean.LeanPool.Spawn(prefab, (Vector2)position, Quaternion.identity);
+			enemy.GetComponent<Health>().Value = config.Health;
+			enemy.GetComponent<MoveSpeed>().Value = UnityEngine.Random.Range(config.MoveSpeedMinMax.x, config.MoveSpeedMinMax.y);
+			enemy.GetComponent<Position2D>().Value = position;
+			enemy.GetComponent<Heading2D>().Value = UnityEngine.Random.insideUnitCircle.normalized;
 		}
 	}
 }
