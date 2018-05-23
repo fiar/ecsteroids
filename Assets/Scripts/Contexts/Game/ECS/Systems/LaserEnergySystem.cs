@@ -29,6 +29,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			for (int i = 0; i < _data.Length; i++)
 			{
 				_data.LaserEnergy[i].Value = Mathf.Clamp01(_data.LaserEnergy[i].Value + config.LaserRestoreSpeed * deltaTime);
+				VariablesContainer.LaserEnergy = _data.LaserEnergy[i].Value;
 			}
 		}
 	}

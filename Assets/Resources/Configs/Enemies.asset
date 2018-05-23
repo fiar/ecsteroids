@@ -13,6 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - {fileID: 1145716911106162, guid: 5171ee946d76d7047aba925866297fc2, type: 2}
-  SpawnPeriod: 5
+  SpawnPeriod: 24
   MoveSpeedMinMax: {x: 8, y: 10}
-  Health: 3

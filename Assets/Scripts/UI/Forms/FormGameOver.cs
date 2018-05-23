@@ -2,6 +2,7 @@
 using System.Collections;
 using Kernel.UI;
 using System;
+using TMPro;
 
 namespace Scripts.UI.Forms
 {
@@ -13,6 +14,14 @@ namespace Scripts.UI.Forms
 		public event Action ExitClickedEvent;
 		#endregion
 
+		[SerializeField]
+		private TMP_Text _scoreText;
+
+
+		public int ScoreText
+		{
+			set { _scoreText.text = value.ToString(); }
+		}
 
 		#region UI Events
 		public void RestartClickedExecute()

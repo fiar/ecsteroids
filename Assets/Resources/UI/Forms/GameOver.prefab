@@ -731,6 +731,7 @@ MonoBehaviour:
   - {fileID: 114016996851899690}
   - {fileID: 114426925859809174}
   _showFader: 1
+  _scoreText: {fileID: 114007304487166834}
 --- !u!114 &114915335849717918
 MonoBehaviour:
   m_ObjectHideFlags: 1

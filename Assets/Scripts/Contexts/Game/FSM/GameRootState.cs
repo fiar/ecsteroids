@@ -13,6 +13,8 @@ namespace Scripts.Contexts.Game.FSM
 		protected void Awake()
 		{
 			_form = UIManager.CreateForm("GameHUD");
+
+			VariablesContainer.Reset();
 		}
 
 		protected void OnEnter()

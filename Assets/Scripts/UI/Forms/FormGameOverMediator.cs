@@ -1,5 +1,6 @@
 ﻿using Kernel.Core;
 using Kernel.UI;
+using Scripts.Contexts.Game;
 
 namespace Scripts.UI.Forms
 {
@@ -8,6 +9,8 @@ namespace Scripts.UI.Forms
 		protected override void OnViewOpen()
 		{
 			base.OnViewOpen();
+
+			View.ScoreText = VariablesContainer.Score;
 
 			View.RestartClickedEvent += View_RestartClickedEvent;
 			View.ExitClickedEvent += View_ExitClickedEvent;

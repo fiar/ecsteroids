@@ -38,6 +38,8 @@ namespace Scripts.Contexts.Game.ECS.Systems
 				{
 					if (gameObject.GetComponent<Asteroid>() != null)
 					{
+						VariablesContainer.Score++;
+
 						toDestroy.Add(_data.TriggerHandler[i].gameObject);
 						toDestroy.Add(gameObject);
 
@@ -57,6 +59,8 @@ namespace Scripts.Contexts.Game.ECS.Systems
 					}
 					else if (gameObject.GetComponent<Enemy>() != null)
 					{
+						VariablesContainer.Score++;
+
 						toDestroy.Add(_data.TriggerHandler[i].gameObject);
 						toDestroy.Add(gameObject);
 						Lean.LeanPool.Spawn(
