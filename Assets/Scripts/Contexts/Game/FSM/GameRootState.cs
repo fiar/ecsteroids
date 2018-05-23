@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Kernel.StateMachine;
-using Scripts.Components;
 using Kernel.UI;
 
 namespace Scripts.Contexts.Game.FSM

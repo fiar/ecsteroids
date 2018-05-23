@@ -2,6 +2,11 @@
 using System.Collections;
 using Kernel.StateMachine;
 using Scripts.Components;
+using Scripts.Utils;
+using Kernel.Core;
+using Scripts.Configs;
+using Scripts.Contexts.Game.ECS.Components;
+using Unity.Mathematics;
 
 namespace Scripts.Contexts.Game.FSM
 {
@@ -15,6 +20,11 @@ namespace Scripts.Contexts.Game.FSM
 
 		protected void Awake()
 		{
+			var playerConfig = ConfigManager.Load<PlayerConfig>();
+
+			var player = ResourcesUtilities.InstantiateFromResource<GameObject>(playerConfig.ResourcePath);
+			player.GetComponent<Heading2D>().Value = new float2(0f, 1f);
+
 			//_background = GameObject.FindObjectOfType<Background>();
 			//Debug.Assert(_background != null, "Background not exists at scene");
 

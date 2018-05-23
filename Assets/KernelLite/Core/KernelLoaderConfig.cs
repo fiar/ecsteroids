@@ -6,8 +6,6 @@ namespace Kernel.Core
 	[CreateAssetMenu(menuName = "Configs/KernelLoader", order = Config.Order)]
 	public class KernelLoaderConfig : Config
 	{
-		[Space]
-
 #if UNITY_EDITOR
 		public UnityEditor.SceneAsset KernelScene;
 #endif

@@ -1,8 +1,12 @@
 ﻿using Kernel.Core;
 using Kernel.StateMachine;
 using Kernel.UI;
+using Scripts.Contexts.Game.ECS.Components;
 using Scripts.Contexts.Game.FSM;
 using System;
+using Unity.Entities;
+using Unity.Transforms;
+using Unity.Transforms2D;
 using UnityEngine;
 
 namespace Scripts.Contexts.Game
