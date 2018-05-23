@@ -18,5 +18,6 @@ namespace Scripts
 		public const string ContinueStage = "CONTINUE_STAGE";
 		public const string RestartStage = "RESTART_STAGE";
 		public const string ExitStage = "EXIT_STAGE";
+		public const string GameOver = "GAME_OVER";
 	}
 }

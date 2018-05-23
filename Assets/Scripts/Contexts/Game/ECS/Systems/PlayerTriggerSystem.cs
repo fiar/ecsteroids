@@ -44,6 +44,9 @@ namespace Scripts.Contexts.Game.ECS.Systems
 							gameObject.transform.position,
 							Quaternion.identity
 						);
+
+						// FSM Event
+						SceneContext.TriggerEvent(Events.GameOver);
 					}
 				}
 			}

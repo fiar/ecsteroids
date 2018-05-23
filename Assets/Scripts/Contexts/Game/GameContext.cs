@@ -33,6 +33,7 @@ namespace Scripts.Contexts.Game
 			var rootState = new ConcreteStateDeclaration<GameRootState>();
 			var gameLoopState = new ConcreteStateDeclaration<GameLoopState>();
 			var gamePauseState = new ConcreteStateDeclaration<GamePauseState>();
+			var gameOverState = new ConcreteStateDeclaration<GameOverState>();
 
 			return new StateMachineBuilder()
 				///
@@ -42,6 +43,7 @@ namespace Scripts.Contexts.Game
 					.State("GameLoop", gameLoopState)
 						.Event(Events.Pause, state => state.Parent.ChangeState("Pause"))
 						.Event(Events.Back, state => state.Parent.ChangeState("Pause"))
+						.Event(Events.GameOver, state => state.Parent.ChangeState("GameOver"))
 					.End()
 					//
 					.State("Pause", gamePauseState)
@@ -49,6 +51,13 @@ namespace Scripts.Contexts.Game
 						.Event(Events.ContinueStage, state => state.Parent.ChangeState("GameLoop"))
 						.Event(Events.RestartStage, state => { RestartStage(); state.Parent.ChangeState("Empty"); })
 						.Event(Events.ExitStage, state => { ExitStage(); state.Parent.ChangeState("Empty"); })
+						.Event(Events.GameOver, state => state.Parent.ChangeState("GameOver")) // TODO: need "TriggerEventUpwards" method (not duplicate event)
+					.End()
+					//
+					.State("GameOver", gameOverState)
+						.Event(Events.ExitStage, state => { ExitStage(); state.Parent.ChangeState("Empty"); })
+						.Event(Events.Back, state => { ExitStage(); state.Parent.ChangeState("Empty"); })
+						.Event(Events.RestartStage, state => { RestartStage(); state.Parent.ChangeState("Empty"); })
 					.End()
 					// Empty - need to exist from previous state (because Form close on exit)
 					.State("Empty")
