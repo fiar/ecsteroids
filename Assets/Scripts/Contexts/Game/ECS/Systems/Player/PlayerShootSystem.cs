@@ -38,7 +38,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 					input.IsBulletFire = false;
 
 					CreateBullet(
-						projectilesConfig.BulletPrefab, projectilesConfig.BulletDamage, projectilesConfig.BulletSpeed,
+						projectilesConfig.BulletPrefab, false, projectilesConfig.BulletSpeed,
 						_data.Position[i].Value, _data.Heading[i].Value
 					);
 				}
@@ -52,7 +52,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 						_data.LaserEnergy[i].Value -= projectilesConfig.LaserShootEnergy;
 
 						CreateBullet(
-							projectilesConfig.LaserPrefab, projectilesConfig.LaserDamage, projectilesConfig.LaserSpeed,
+							projectilesConfig.LaserPrefab, true, projectilesConfig.LaserSpeed,
 							_data.Position[i].Value, _data.Heading[i].Value
 						);
 					}
@@ -60,10 +60,10 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			}
 		}
 
-		private void CreateBullet(GameObject prefab, int damage, float speed, float2 position, float2 heading)
+		private void CreateBullet(GameObject prefab, bool laser, float speed, float2 position, float2 heading)
 		{
 			var bullet = Lean.LeanPool.Spawn(prefab, (Vector2)position, Quaternion.identity);
-			bullet.GetComponent<Bullet>().Damage = damage;
+			bullet.GetComponent<Projectile>().Laser = laser;
 			bullet.GetComponent<MoveSpeed>().Value = speed;
 			bullet.GetComponent<Position2D>().Value = position;
 			bullet.GetComponent<Heading2D>().Value = heading;

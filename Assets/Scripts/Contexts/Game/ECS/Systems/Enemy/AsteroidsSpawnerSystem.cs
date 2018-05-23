@@ -72,7 +72,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			var rotateSign = Mathf.Sign(UnityEngine.Random.Range(-1f, 1f));
 
 			var asteroid = Lean.LeanPool.Spawn(prefab, (Vector2)position, Quaternion.identity);
-			asteroid.GetComponent<Health>().Value = config.Health;
+			asteroid.GetComponent<Asteroid>().Big = true;
 			asteroid.GetComponent<MoveSpeed>().Value = UnityEngine.Random.Range(config.MoveSpeedMinMax.x, config.MoveSpeedMinMax.y);
 			asteroid.GetComponent<Position2D>().Value = position;
 			asteroid.GetComponent<Heading2D>().Value = UnityEngine.Random.insideUnitCircle.normalized;

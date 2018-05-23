@@ -9,12 +9,12 @@ using Kernel.Core;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
-	public class BulletDespawnSystem : ComponentSystem
+	public class ProjectileDespawnSystem : ComponentSystem
 	{
 		public struct Data
 		{
 			public int Length;
-			public ComponentArray<Bullet> Bullet;
+			public ComponentArray<Projectile> Projectile;
 			public ComponentArray<Position2D> Position;
 		}
 
@@ -43,7 +43,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			{
 				if (!_bounds.Contains((Vector2)_data.Position[i].Value))
 				{
-					toDestroy.Add(_data.Bullet[i].gameObject);
+					toDestroy.Add(_data.Projectile[i].gameObject);
 				}
 			}
 

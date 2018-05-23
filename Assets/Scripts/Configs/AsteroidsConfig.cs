@@ -13,6 +13,5 @@ namespace Scripts.Configs
 		[Space]
 		public float SpawnPeriod = 6f;
 		public Vector2 MoveSpeedMinMax = Vector2.one;
-		public int Health = 1;
 	}
 }

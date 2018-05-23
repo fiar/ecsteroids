@@ -43,7 +43,9 @@ GameObject:
   - component: {fileID: 114233972060100278}
   - component: {fileID: 114021153054707964}
   - component: {fileID: 114173869659717934}
-  - component: {fileID: 114529844722387726}
+  - component: {fileID: 114813273877380104}
+  - component: {fileID: 58899072003271616}
+  - component: {fileID: 50167561230775156}
   m_Layer: 0
   m_Name: AsteroidXL1
   m_TagString: Untagged
@@ -78,6 +80,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50167561230775156
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924555456284862}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!58 &58899072003271616
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924555456284862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.6
 --- !u!114 &114011816683393348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,18 +177,6 @@ MonoBehaviour:
   Value:
     x: 0
     y: 0
---- !u!114 &114529844722387726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1924555456284862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a892516e70716e41b31406f1720a1b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 0
 --- !u!114 &114551693857683606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +199,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27197ae646f5ee449626bfbcc7df54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114813273877380104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924555456284862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0117cbe39d7b17b48a69890892197e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 0}
 --- !u!114 &114935098843297378
 MonoBehaviour:
   m_ObjectHideFlags: 1

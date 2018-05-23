@@ -7,5 +7,6 @@ namespace Scripts.Contexts.Game.ECS.Components
 {
 	public class Asteroid : MonoBehaviour
 	{
+		public bool Big;
 	}
 }

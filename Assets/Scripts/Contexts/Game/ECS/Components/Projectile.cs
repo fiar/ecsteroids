@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Scripts.Contexts.Game.ECS.Components
 {
-	public class Health : MonoBehaviour
+	public class Projectile : MonoBehaviour
 	{
-		public int Value;
+		public bool Laser;
 	}
 }

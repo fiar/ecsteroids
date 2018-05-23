@@ -25,8 +25,9 @@ GameObject:
   - component: {fileID: 114237731585430278}
   - component: {fileID: 114239023390545660}
   - component: {fileID: 114474991165793458}
-  - component: {fileID: 114630613094696918}
   - component: {fileID: 114752296695202982}
+  - component: {fileID: 58641862418234720}
+  - component: {fileID: 50476043108976274}
   m_Layer: 0
   m_Name: UFO
   m_TagString: Untagged
@@ -79,6 +80,41 @@ Transform:
   m_Father: {fileID: 4695557151914182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50476043108976274
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145716911106162}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!58 &58641862418234720
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145716911106162}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.45}
+  serializedVersion: 2
+  m_Radius: 2.18
 --- !u!114 &114237731585430278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,18 +201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _s: 0.8
   _v: 1
---- !u!114 &114630613094696918
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1145716911106162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a892516e70716e41b31406f1720a1b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 0
 --- !u!114 &114752296695202982
 MonoBehaviour:
   m_ObjectHideFlags: 1

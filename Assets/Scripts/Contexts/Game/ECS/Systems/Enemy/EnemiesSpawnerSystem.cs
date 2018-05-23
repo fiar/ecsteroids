@@ -73,7 +73,6 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			var rotateSign = Mathf.Sign(UnityEngine.Random.Range(-1f, 1f));
 
 			var enemy = Lean.LeanPool.Spawn(prefab, (Vector2)position, Quaternion.identity);
-			enemy.GetComponent<Health>().Value = config.Health;
 			enemy.GetComponent<MoveSpeed>().Value = UnityEngine.Random.Range(config.MoveSpeedMinMax.x, config.MoveSpeedMinMax.y);
 			enemy.GetComponent<Position2D>().Value = position;
 			enemy.GetComponent<Heading2D>().Value = UnityEngine.Random.insideUnitCircle.normalized;
