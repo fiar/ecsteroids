@@ -4,6 +4,8 @@ using UnityEngine;
 using Scripts.Contexts.Game.ECS.Components;
 using System.Collections.Generic;
 using Scripts.Components;
+using Kernel.Core;
+using Scripts.Configs;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
@@ -26,7 +28,9 @@ namespace Scripts.Contexts.Game.ECS.Systems
 		{
 			base.OnStartRunning();
 
-			var bounds = OrthoCamera.Main.Camera.CalculateOrthographicBounds(new Vector3(-2f, -2f, 0f));
+			var config = ConfigManager.Load<GameConfig>();
+
+			var bounds = OrthoCamera.Main.Camera.CalculateOrthographicBounds(config.BoundsLimitExpand);
 			_halfSize = bounds.size * 0.5f;
 		}
 
