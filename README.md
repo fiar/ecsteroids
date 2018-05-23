@@ -1,4 +1,5 @@
 # ecsteroids
+## Unity 2018.1.1.f1 - NET 4.x
 
 Asteroid game based on Unity ECS (Hybryd)
 
