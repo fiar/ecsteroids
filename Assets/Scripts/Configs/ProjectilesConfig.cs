@@ -8,12 +8,10 @@ namespace Scripts.Configs
 	public class ProjectilesConfig : Config
 	{
 		public GameObject BulletPrefab;
-		public int BulletDamage = 1;
 		public float BulletSpeed = 1f;
 
 		[Space]
 		public GameObject LaserPrefab;
-		public int LaserDamage = 1;
 		public float LaserSpeed = 1f;
 		public float LaserShootEnergy = 0.2f;
 		public float LaserRestoreSpeed = 3f;

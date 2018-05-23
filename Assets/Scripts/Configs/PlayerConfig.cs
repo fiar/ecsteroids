@@ -12,7 +12,6 @@ namespace Scripts.Configs
 		public float Deceleration = 10f;
 		public float Torque = 180f;
 		public float BulletShootCooldown = 0.5f;
-		public float LaserShootCooldown = 0.5f;
 		public float LaserShootPrepare = 1f;
 	}
 }
