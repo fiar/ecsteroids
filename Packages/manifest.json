@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "com.unity.incrementalcompiler": "0.0.42-preview.1",
+    "com.unity.entities": "0.0.12-preview.3",
+    "com.unity.package-manager-ui": "1.9.3",
+    "com.unity.textmeshpro": "1.2.3"
+  },
+  "registry": "https://staging-packages.unity.com",
+  "testables": [
+    "com.unity.collections",
+    "com.unity.entities",
+    "com.unity.jobs"
+  ]
+}
