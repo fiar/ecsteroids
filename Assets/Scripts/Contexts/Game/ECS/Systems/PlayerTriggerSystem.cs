@@ -24,7 +24,6 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 		protected override void OnUpdate()
 		{
-			return;
 			if (_data.Length == 0) return;
 
 			float deltaTime = Time.deltaTime;
