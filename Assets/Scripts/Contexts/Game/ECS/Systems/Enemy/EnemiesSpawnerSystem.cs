@@ -18,6 +18,11 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			public ComponentArray<EnemiesSpawner> EnemiesSpawner;
 		}
 
+		public struct Players
+		{
+			public PlayerInput PlayerInput;
+		}
+
 		[Inject] private Data _data;
 
 		private float _timer;
@@ -55,6 +60,9 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 		private void CreateEnemy(EnemiesConfig config)
 		{
+			var players = GetEntities<Players>();
+			if (players.Length == 0) return;
+
 			var idx = UnityEngine.Random.Range(0, config.Enemies.Length);
 			var prefab = config.Enemies[idx];
 

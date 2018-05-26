@@ -17,6 +17,11 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			public ComponentArray<AsteroidsSpawner> AsteroidsSpawner;
 		}
 
+		public struct Players
+		{
+			public PlayerInput PlayerInput;
+		}
+
 		[Inject] private Data _data;
 
 		private float _timer;
@@ -54,6 +59,9 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 		private void CreateAsteroid(AsteroidsConfig config)
 		{
+			var players = GetEntities<Players>();
+			if (players.Length == 0) return;
+
 			var idx = UnityEngine.Random.Range(0, config.AsteroidsXL.Length);
 			var prefab = config.AsteroidsXL[idx];
 

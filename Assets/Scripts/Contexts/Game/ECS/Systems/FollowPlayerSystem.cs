@@ -31,7 +31,6 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 			var deltaTime = Time.deltaTime;
 
-
 			var players = GetEntities<Players>();
 
 			for (int i = 0; i < _data.Length; i++)
