@@ -9,14 +9,15 @@ using Kernel.Core;
 
 namespace Scripts.Contexts.Game.ECS.Systems
 {
-	public class PlayerTriggerSystem : ComponentSystem
+	public class EnemiesTriggerSystem : ComponentSystem
 	{
 		public struct Data
 		{
 			public int Length;
-			public ComponentArray<PlayerInput> PlayerInput;
+			public ComponentArray<EnemyBase> PlayerInput;
 			public ComponentArray<TriggerHandler2D> TriggerHandler;
 			public ComponentArray<Position2D> Position;
+			public ComponentArray<Heading2D> Heading;
 		}
 
 		[Inject] private Data _data;
@@ -24,11 +25,9 @@ namespace Scripts.Contexts.Game.ECS.Systems
 
 		protected override void OnUpdate()
 		{
-			return;
 			if (_data.Length == 0) return;
 
 			float deltaTime = Time.deltaTime;
-			var gameConfig = ConfigManager.Load<GameConfig>();
 
 			var toDestroy = new List<GameObject>();
 			for (int i = 0; i < _data.Length; i++)
@@ -38,23 +37,11 @@ namespace Scripts.Contexts.Game.ECS.Systems
 				{
 					if (gameObject.GetComponent<EnemyBase>() != null)
 					{
-						toDestroy.Add(_data.TriggerHandler[i].gameObject);
-						toDestroy.Add(gameObject);
-						Lean.LeanPool.Spawn(
-							gameConfig.Explosions[UnityEngine.Random.Range(0, gameConfig.Explosions.Length)],
-							gameObject.transform.position,
-							Quaternion.identity
-						);
-
-						// FSM Event
-						SceneContext.TriggerEvent(Events.GameOver);
+						var p = (Vector2)_data.Position[i].Value - (Vector2)gameObject.transform.position;
+						_data.Heading[i].Value = p.normalized;
+						_data.TriggerHandler[i].Value = null;
 					}
 				}
-			}
-
-			foreach (var go in toDestroy)
-			{
-				Lean.LeanPool.Despawn(go);
 			}
 		}
 	}
