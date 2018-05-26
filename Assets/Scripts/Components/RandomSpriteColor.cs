@@ -8,9 +8,11 @@ namespace Scripts.Components
 	public class RandomSpriteColor : MonoBehaviour
 	{
 		[SerializeField]
-		protected float _s = 1f;
+		private float _s = 1f;
 		[SerializeField]
-		protected float _v = 1f;
+		private float _v = 1f;
+
+		private float _h;
 
 		private SpriteRenderer _renderer;
 
@@ -22,7 +24,14 @@ namespace Scripts.Components
 
 		protected void OnEnable()
 		{
-			_renderer.color = Color.HSVToRGB(UnityEngine.Random.value, _s, _v);
+			_h = UnityEngine.Random.value;
+			_renderer.color = Color.HSVToRGB(_h, _s, _v);
+		}
+
+		protected void LateUpdate()
+		{
+			_h = Mathf.Repeat(_h + Time.deltaTime * 0.02f, 1f);
+			_renderer.color = Color.HSVToRGB(_h, _s, _v);
 		}
 	}
 }

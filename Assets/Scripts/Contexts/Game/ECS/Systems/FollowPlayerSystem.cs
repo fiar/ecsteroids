@@ -32,7 +32,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 			var deltaTime = Time.deltaTime;
 
 
-			var players =GetEntities<Players>();
+			var players = GetEntities<Players>();
 
 			for (int i = 0; i < _data.Length; i++)
 			{
@@ -41,7 +41,7 @@ namespace Scripts.Contexts.Game.ECS.Systems
 					var direction = math.normalize(player.Position.Value - _data.Position[i].Value);
 					if (direction.x != 0f && direction.y != 0f)
 					{
-						_data.Heading[i].Value = direction;
+						_data.Heading[i].Value = math.lerp(_data.Heading[i].Value, direction, deltaTime);
 					}
 					break;
 				}

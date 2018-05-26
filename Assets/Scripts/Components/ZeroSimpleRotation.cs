@@ -7,7 +7,7 @@ namespace Scripts.Components
 	public class ZeroSimpleRotation : MonoBehaviour
 	{
 
-		protected void Update()
+		protected void LateUpdate()
 		{
 			transform.rotation = Quaternion.identity;
 		}
